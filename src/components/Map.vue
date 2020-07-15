@@ -91,6 +91,7 @@ export default {
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       currentZoom: 11.5,
+      zoom: 10,
       showParagraph: false,
       mapOptions: {
         zoomSnap: 0.5
@@ -117,7 +118,7 @@ export default {
 
 <style>
 .map {
-  height: 500px;
+  height: 30vh;
   width: 100%;
 }
 </style>
