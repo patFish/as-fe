@@ -3,14 +3,13 @@
     <l-map
       v-if="showMap"
       :zoom="zoom"
-      :center="center"
+      :center="locations[0]"
       :options="mapOptions"
       style="height: 80%"
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
-      <div>{{locations}}</div>
       <div v-for="loc in locations" :key="loc">
         <l-marker :lat-lng="loc">
           <l-popup>
@@ -54,7 +53,7 @@
 </template>
 
 <script>
-import { latLng } from "leaflet";
+// import { latLng } from "leaflet";
 import {
   LMap,
   LTileLayer,
@@ -86,15 +85,12 @@ export default {
   props: {
     locations: Array
   },
-  data() {
+  data: () => {
     return {
-      zoom: 13,
-      center: latLng(47.41322, -1.219482),
-      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       currentZoom: 11.5,
-      currentCenter: latLng(47.41322, -1.219482),
       showParagraph: false,
       mapOptions: {
         zoomSnap: 0.5
