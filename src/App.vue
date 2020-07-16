@@ -50,7 +50,7 @@ export default {
         },
         {
           id: 12345678,
-          name: "Executive car 1",
+          name: "Executive car 2",
           vin: "ASD423E3D3RF5",
           make: "Mazda",
           model: "CX-5",
@@ -67,7 +67,7 @@ export default {
         },
         {
           id: 12345678,
-          name: "Executive car 1",
+          name: "Executive car 3",
           vin: "ASD423E3D3RF5",
           make: "Mazda",
           model: "CX-5",
@@ -84,7 +84,7 @@ export default {
         },
         {
           id: 12345678,
-          name: "Executive car 1",
+          name: "Executive car 4",
           vin: "ASD423E3D3RF5",
           make: "Mazda",
           model: "CX-5",
