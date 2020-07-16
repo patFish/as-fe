@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       fleet: [],
-      source: process.env.AWSBACKEND || "http://localhost:8080"
+      source: process.env.BACKEND || "http://localhost:8080"
     };
   },
   methods: {
