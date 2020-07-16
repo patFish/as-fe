@@ -13,8 +13,8 @@
         </v-btn-toggle>
       </v-row>
     </v-card-text>
-    <VisualFleet v-if="toggle_exclusive===0" :locations="cars" :cars="fleet" class="view" />
-    <ListFleet v-if="toggle_exclusive===1" :locations="locs" :cars="fleet" class="view" />
+    <VisualFleet v-if="toggle_exclusive===0" :cars="fleet" class="view" />
+    <ListFleet v-if="toggle_exclusive===1" :cars="fleet" class="view" />
   </div>
 </template>
 
