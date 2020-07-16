@@ -13,8 +13,8 @@
         </v-btn-toggle>
       </v-row>
     </v-card-text>
-    <VisualFleet v-if="toggle_exclusive===0" :cars="fleet" class="view" />
-    <ListFleet v-if="toggle_exclusive===1" :cars="fleet" class="view" />
+    <VisualFleet v-if="toggle_exclusive===0" :cars="cars" class="view" />
+    <ListFleet v-if="toggle_exclusive===1" :cars="cars" class="view" />
   </div>
 </template>
 
@@ -39,6 +39,7 @@ export default {
     cars() {
       return this.fleet.map(car => {
         car.location = latLng(car.Position.lat, car.Position.lon);
+        return car;
       });
     }
   }
