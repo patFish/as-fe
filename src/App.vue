@@ -37,7 +37,6 @@ export default {
       if (typeof this.source === "string") {
         fetch(this.source + "/fleet")
           .then(stream => {
-            console.log(stream);
             return stream.json();
           })
           .then(data => (this.fleet = data))
