@@ -10,15 +10,13 @@
       </v-avatar>
     </v-app-bar>
 
-    <v-content>
-      <!-- <HelloWorld/> -->
+    <v-main>
       <FleetOverview :fleet="fleet" />
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld';
 import FleetOverview from "./components/FleetOverview";
 
 export default {
@@ -28,79 +26,29 @@ export default {
     // HelloWorld,
     FleetOverview
   },
-  data: () => {
+  data() {
     return {
-      fleet: [
-        {
-          id: 12345678,
-          name: "Executive car 1",
-          vin: "ASD423E3D3RF5",
-          make: "Mazda",
-          model: "CX-5",
-          year: "2019",
-          fuelType: "petrol",
-          type: "SUV",
-          Position: {
-            lat: 3.995,
-            lon: 43.2221
-          },
-          odometer: 43546,
-          fuel: 33.4,
-          battery: 12.7
-        },
-        {
-          id: 12345678,
-          name: "Executive car 2",
-          vin: "ASD423E3D3RF5",
-          make: "Mazda",
-          model: "CX-5",
-          year: "2019",
-          fuelType: "petrol",
-          type: "SUV",
-          Position: {
-            lat: 3.795,
-            lon: 43.1221
-          },
-          odometer: 43546,
-          fuel: 33.4,
-          battery: 12.7
-        },
-        {
-          id: 12345678,
-          name: "Executive car 3",
-          vin: "ASD423E3D3RF5",
-          make: "Mazda",
-          model: "CX-5",
-          year: "2019",
-          fuelType: "petrol",
-          type: "SUV",
-          Position: {
-            lat: 4.095,
-            lon: 43.2221
-          },
-          odometer: 43546,
-          fuel: 33.4,
-          battery: 12.7
-        },
-        {
-          id: 12345678,
-          name: "Executive car 4",
-          vin: "ASD423E3D3RF5",
-          make: "Mazda",
-          model: "CX-5",
-          year: "2019",
-          fuelType: "petrol",
-          type: "SUV",
-          Position: {
-            lat: 4.195,
-            lon: 43.2221
-          },
-          odometer: 43546,
-          fuel: 33.4,
-          battery: 12.7
-        }
-      ]
+      fleet: [],
+      source: process.env.AWSBACKEND || "http://localhost:8080"
     };
+  },
+  methods: {
+    fetchItems() {
+      if (typeof this.source === "string") {
+        fetch(this.source + "/fleet")
+          .then(stream => {
+            console.log(stream);
+            return stream.json();
+          })
+          .then(data => (this.fleet = data))
+          .catch(error => console.error(error));
+      } else {
+        this.items = this.source;
+      }
+    }
+  },
+  mounted() {
+    this.fetchItems();
   }
 };
 </script>
