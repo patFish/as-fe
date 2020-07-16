@@ -1,28 +1,44 @@
 <template>
   <div class="fleetoverview">
     <h1 class="header">Flottenübersicht</h1>
-    <Map class="map" :locations="locs" />
-    <FleetTable class="list" :cars="fleet" />
+    <v-card-text>
+      <v-row align="center" justify="center">
+        <v-btn-toggle v-model="toggle_exclusive">
+          <v-btn>
+            <v-icon>mdi-map</v-icon>
+          </v-btn>
+          <v-btn>
+            <v-icon>mdi-format-list-bulleted</v-icon>
+          </v-btn>
+        </v-btn-toggle>
+      </v-row>
+    </v-card-text>
+    <VisualFleet v-if="toggle_exclusive===0" :locations="cars" :cars="fleet" class="view" />
+    <ListFleet v-if="toggle_exclusive===1" :locations="locs" :cars="fleet" class="view" />
   </div>
 </template>
 
 <script>
 import { latLng } from "leaflet";
-import Map from "./Map";
-import FleetTable from "./FleetTable";
+import VisualFleet from "./VisualFleet";
+import ListFleet from "./ListFleet";
 
 export default {
   name: "FleetOverview",
   components: {
-    Map,
-    FleetTable
+    VisualFleet,
+    ListFleet
   },
   props: { fleet: Array },
-
+  data() {
+    return {
+      toggle_exclusive: 0
+    };
+  },
   computed: {
-    locs() {
-      return this.fleet.map(item => {
-        return latLng(item.Position.lat, item.Position.lon);
+    cars() {
+      return this.fleet.map(car => {
+        car.location = latLng(car.Position.lat, car.Position.lon);
       });
     }
   }
@@ -30,28 +46,7 @@ export default {
 </script>
 
 <style>
-.fleetoverview {
-  display: block;
-}
-.map {
-  grid-area: map;
-}
-.list {
-  grid-area: list;
-}
-.header {
-  grid-area: header;
-}
-
-@media only screen and (min-width: 700px) {
-  .fleetoverview {
-    margin: 5%;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "header header"
-      "map list";
-  }
+.view {
+  margin: 3%;
 }
 </style>
