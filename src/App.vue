@@ -12,12 +12,28 @@
 
     <v-main>
       <FleetOverview :fleet="fleet" />
+      <p v-show="showParagraph">{{callApi()}}</p>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import Amplify, { API } from "aws-amplify";
+import awsconfig from "./aws-exports";
 import FleetOverview from "./components/FleetOverview";
+
+// Amplify.configure({
+//   API: {
+//     endpoints: [
+//       {
+//         name: "MyAPIGatewayAPI",
+//         endpoint: "http://as-loadbalancer-521356964.us-east-2.elb.amazonaws.com"
+//       }
+//     ]
+//   }
+// });
+
+Amplify.configure(awsconfig);
 
 export default {
   name: "App",
@@ -29,10 +45,34 @@ export default {
   data() {
     return {
       fleet: [],
+      test: [],
       source: process.env.BACKEND || "http://localhost:8080"
     };
   },
   methods: {
+    async callApi() {
+      const apiName = "apifeapi";
+      const path = "/fleet";
+      const myInit = {
+        // // OPTIONAL
+        // headers: {}, // OPTIONAL
+        response: true // OPTIONAL (return the entire Axios response object instead of only response.data)
+        // queryStringParameters: {
+        //   // OPTIONAL
+        //   name: "param"
+        // }
+      };
+
+      await API.get(apiName, path, myInit)
+        .then(response => {
+          // Add your code here
+          // console.log(JSON.stringify(response));
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+    },
     fetchItems() {
       if (typeof this.source === "string") {
         fetch(this.source + "/fleet")

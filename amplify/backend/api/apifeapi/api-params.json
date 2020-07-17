@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/fleet",
+            "lambdaFunction": "asfelambda",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "apifeapi",
+    "apiName": "apifeapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "asfelambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-asfe-dev-105603-authRole",
+        "unAuthRoleName": "amplify-asfe-dev-105603-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "asfelambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
