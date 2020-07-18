@@ -4,12 +4,22 @@
     <v-card-text>
       <v-row align="center" justify="center">
         <v-btn-toggle v-model="toggle_exclusive">
-          <v-btn>
-            <v-icon>mdi-map</v-icon>
-          </v-btn>
-          <v-btn>
-            <v-icon>mdi-format-list-bulleted</v-icon>
-          </v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn v-bind="attrs" v-on="on">
+                <v-icon>mdi-map</v-icon>
+              </v-btn>
+            </template>
+            <span>Flotte Karten Übersicht</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn v-bind="attrs" v-on="on">
+                <v-icon>mdi-format-list-bulleted</v-icon>
+              </v-btn>
+            </template>
+            <span>Flotte Listen Übersicht</span>
+          </v-tooltip>
         </v-btn-toggle>
       </v-row>
     </v-card-text>
