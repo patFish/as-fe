@@ -5,7 +5,6 @@
       :zoom="zoom"
       :center="locations[0]||defaultCenter"
       :options="mapOptions"
-      style="height: 80%"
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate"
     >
