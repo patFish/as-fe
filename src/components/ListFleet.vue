@@ -23,7 +23,7 @@ export default {
     Map
   },
   props: { cars: Array },
-  data() {
+  data: () => {
     return {
       headers: [
         {
