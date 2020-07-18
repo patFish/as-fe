@@ -1,8 +1,8 @@
 <template>
-  <div class="visualfleet">
+  <v-sheet class="visualfleet" :elevation="1" :rounded="true">
     <Map class="map" :locations="locations" />
     <FleetTable class="list" :cars="cars" />
-  </div>
+  </v-sheet>
 </template>
 
 <script>
