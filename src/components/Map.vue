@@ -13,11 +13,9 @@
         <l-marker :lat-lng="loc">
           <l-popup>
             <div @click="innerClick">
-              I am a popup
               <p v-show="showParagraph">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi.
-                Donec finibus semper metus id malesuada.
+                Car Information Placeholder.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam expedita error provident natus velit fugiat explicabo quasi iste tenetur ea vitae tempora, dolorum hic optio culpa. Consequuntur aspernatur vero modi?
               </p>
             </div>
           </l-popup>
@@ -46,8 +44,6 @@ Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png")
 });
 
-console.log(process.env);
-
 export default {
   name: "FleetMap",
   components: {
@@ -70,7 +66,7 @@ export default {
       defaultCenter:
         latLng(process.env.VUE_MAPCENTER_LAT, process.env.VUE_MAPCENTER_LON) ||
         latLng(46.8383763, 9.2623928),
-      showParagraph: false,
+      showParagraph: true,
       mapOptions: {
         zoomSnap: 0.5
       },
@@ -86,9 +82,6 @@ export default {
     },
     showLongText() {
       this.showParagraph = !this.showParagraph;
-    },
-    innerClick() {
-      alert("Click!");
     }
   }
 };
@@ -97,6 +90,5 @@ export default {
 <style>
 .map {
   height: 30vh;
-  width: 100%;
 }
 </style>
