@@ -35,14 +35,87 @@ app.use(function(req, res, next) {
 
 app.get("/fleet", async function(req, res) {
   // Add your code here
-  const foo = await fetch(
-    "http://as-loadbalancer-521356964.us-east-2.elb.amazonaws.com/fleet"
-  );
+  const headers = {
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Origin":
+      "http://as-loadbalancer-521356964.us-east-2.elb.amazonaws.com",
+    "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+    accept: "application/json",
+  };
+  const fleet = [
+    {
+      id: 12345678,
+      name: "Executive car 1",
+      vin: "ASD423E3D3RF5",
+      make: "Mazda",
+      model: "CX-5",
+      year: "2019",
+      fuelType: "petrol",
+      type: "SUV",
+      Position: {
+        lat: 3.995,
+        lon: 43.2221,
+      },
+      odometer: 43546,
+      fuel: 33.4,
+      battery: 12.7,
+    },
+    {
+      id: 12345678,
+      name: "Executive car 2",
+      vin: "ASD423E3D3RF5",
+      make: "Mazda",
+      model: "CX-5",
+      year: "2019",
+      fuelType: "petrol",
+      type: "SUV",
+      Position: {
+        lat: 3.795,
+        lon: 43.1221,
+      },
+      odometer: 43546,
+      fuel: 33.4,
+      battery: 12.7,
+    },
+    {
+      id: 12345678,
+      name: "Executive car 3",
+      vin: "ASD423E3D3RF5",
+      make: "Mazda",
+      model: "CX-5",
+      year: "2019",
+      fuelType: "petrol",
+      type: "SUV",
+      Position: {
+        lat: 4.095,
+        lon: 43.2221,
+      },
+      odometer: 43546,
+      fuel: 33.4,
+      battery: 12.7,
+    },
+    {
+      id: 12345678,
+      name: "Executive car 4",
+      vin: "ASD423E3D3RF5",
+      make: "Mazda",
+      model: "CX-5",
+      year: "2019",
+      fuelType: "petrol",
+      type: "SUV",
+      Position: {
+        lat: 4.195,
+        lon: 43.2221,
+      },
+      odometer: 43546,
+      fuel: 33.4,
+      battery: 12.7,
+    },
+  ];
   res.json({
     success: "get call succeed!",
     url: req.url,
-    foo: foo,
-    test: "hello",
+    fleet: fleet,
   });
 });
 
