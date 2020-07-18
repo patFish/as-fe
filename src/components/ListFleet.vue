@@ -8,7 +8,6 @@
     show-expand
     class="elevation-1 listfleet"
   >
-    <template v-slot:top></template>
     <template v-slot:expanded-item="{ headers, item }">
       <td :colspan="headers.length">
         <Map :locations="[item.location]" />
