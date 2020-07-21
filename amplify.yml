@@ -19,9 +19,9 @@ test:
     preTest:
       commands:
         - npm ci
-        - npm install wait-on
-        - npm install mocha@5.2.0 mochawesome mochawesome-merge mochawesome-report-generator
-        - "npm run serve & npx wait-on http://localhost:8080"
+        - yarn add wait-on
+        - yarn add mocha@5.2.0 mochawesome mochawesome-merge mochawesome-report-generator
+        - "yarn serve & npx wait-on http://localhost:8080"
     test:
       commands:
         - 'npx cypress run --reporter mochawesome --reporter-options "reportDir=cypress/report/mochawesome-report,overwrite=false,html=false,json=true,timestamp=mmddyyyy_HHMMss"'
