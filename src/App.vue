@@ -27,7 +27,6 @@ export default {
   name: "App",
 
   components: {
-    // HelloWorld,
     FleetOverview
   },
   data() {
@@ -39,20 +38,11 @@ export default {
     async callApi() {
       const apiName = "apifeapi";
       const path = "/fleet";
-      const myInit = {
-        // // OPTIONAL
-        // headers: {}, // OPTIONAL
-        // response: true // OPTIONAL (return the entire Axios response object instead of only response.data)
-        // queryStringParameters: {
-        //   // OPTIONAL
-        //   name: "param"
-        // }
-      };
+      const myInit = {};
 
       await API.get(apiName, path, myInit)
         .then(response => {
           // Add your code here
-          // console.log(response);
           this.fleet = response.fleet;
         })
         .catch(error => {
