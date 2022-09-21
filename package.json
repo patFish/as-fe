@@ -14,7 +14,7 @@
     "leaflet": "^1.6.0",
     "vue": "^2.6.11",
     "vue2-leaflet": "^2.5.2",
-    "vuetify": "^2.3.4"
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
